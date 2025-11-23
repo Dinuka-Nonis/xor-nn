@@ -87,3 +87,4 @@ The forward and backward passes are computed step‑by‑step, allowing you to u
 XOR cannot be solved with a linear classifier.
 A neural network must learn a non‑linear decision boundary — making XOR the perfect beginner challenge.
 
+![alt text](image.png)
