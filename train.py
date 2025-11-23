@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from nn_numpy import NeuralNetwork
 from utils import create_xor_data
 
@@ -26,6 +27,10 @@ def main():
         pred, prob = nn.predict(np.array([x]))
         print(f"{x} → Pred: {pred[0][0]}, Prob: {prob[0][0]:.4f}, Target: {t[0]}")
 
-
+    plt.plot(loss_list)
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.title("Training Loss Curve")
+    plt.show()
 if __name__ == "__main__":
     main()
