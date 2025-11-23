@@ -23,7 +23,7 @@ The network learns to reproduce the behavior of XOR:
 xor-nn/
 │── nn_numpy.py   # Neural network implementation (weights, activations)
 │── train.py      # Training loop
-│── utils.py      # Optional helper functions
+│── utils.py      # Helper functions
 └── README.md     # Project documentation
 ```
 
