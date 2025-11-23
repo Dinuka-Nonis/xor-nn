@@ -63,6 +63,19 @@ class NeuralNetwork:
         _, _, _, a2 = self.forward(X)
         preds = (a2 > threshold).astype(int)
         return preds, a2
+    def compute_loss(self, y_true, y_pred):
+        """
+        Compute Binary Cross Entropy loss.
+        y_true: shape (m, 1)
+        y_pred: shape (m, 1), probabilities from forward()
+        """
+        eps = 1e-8  # avoid log(0)
+        loss = -np.mean(
+            y_true * np.log(y_pred + eps) +
+            (1 - y_true) * np.log(1 - y_pred + eps)
+        )
+        return loss
+
 
 # Quick manual test when file is executed directly
 if __name__ == "__main__":
@@ -76,3 +89,11 @@ if __name__ == "__main__":
     print("a2 (output probabilities):\n", a2)
     preds, probs = nn.predict(X)
     print("binary predictions:\n", preds)
+    X = np.array([[0,0], [0,1], [1,0], [1,1]], float)
+    y = np.array([[0],[1],[1],[0]], float)
+
+    nn = NeuralNetwork(input_size=2, hidden_size=2, output_size=1, seed=1)
+    _, _, _, a2 = nn.forward(X)
+
+    loss = nn.compute_loss(y, a2)
+    print("Loss =", loss)
